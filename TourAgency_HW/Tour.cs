@@ -3,15 +3,15 @@ namespace TourAgency_HW
 {
     class Tour
     {
-        private string nameTour;
-        private int durationTour;
-        private double priceTour;
-        private int maxOfTourist;
+        protected string nameTour;
+        protected int durationTour;
+        protected double priceTour;
+        protected int maxOfTourist;
 
-        protected string NameTour { get => nameTour;  }
-        protected int DurationTour { get => durationTour;  }
-        protected double PriceTour { get => priceTour; }
-        protected int MaxOfTourist { get => maxOfTourist;  }
+        public string NameTour { get => nameTour;  }
+        public int DurationTour { get => durationTour;  }
+        public double PriceTour { get => priceTour; }
+        public int MaxOfTourist { get => maxOfTourist;  }
 
         public Tour(string nameTour, int durationTour, double priceTour, int maxOfTourist)
         {
@@ -75,8 +75,21 @@ namespace TourAgency_HW
 
         public override string ToString()
         {
-            return String.Format("Tour name: {0}\nTour duration: {1}\nTour price: {2}\nMaximum tourist: {3}"
-                , NameTour, DurationTour, PriceTour, MaxOfTourist);
+            if (durationTour > 24)
+            {
+                int days;
+                int hours;
+                days = durationTour / 24;
+                hours = durationTour % 24;
+
+                return String.Format("Tour name: {0}\nTour duration: {1}d {2}h\nTour price: {3}\nMaximum tourist: {4}\n"
+                    , nameTour, days, hours, priceTour, maxOfTourist);
+            }
+            else
+            {
+                return String.Format("Tour name: {0}\nTour duration: {1}\nTour price: {2}\nMaximum tourist: {3}\n"
+                        , nameTour, durationTour, priceTour, maxOfTourist);
+            }
         }
     }
 }

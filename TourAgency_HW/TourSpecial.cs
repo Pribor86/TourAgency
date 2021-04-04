@@ -3,25 +3,28 @@ namespace TourAgency_HW
 {
     class TourSpecial: Tour
     {
-        int discount;
-        int minOfTourist;
+        static double discount = 10;
+        int minOfTourist = 10;
 
-        public int Discount { get => discount;  }
+        public double Discount { get => discount;  }
         public int MinOfTourist { get => minOfTourist; }
 
-        public TourSpecial(int discount, int minOfTourist, string nameTour,
+        public TourSpecial(string nameTour,
             int durationTour, double priceTour, int maxOfTourist)
             :base(nameTour, durationTour, priceTour, maxOfTourist)
         {
-            this.discount = discount;
-            this.minOfTourist = minOfTourist;
+            if (minOfTourist > maxOfTourist)
+            {
+                minOfTourist = maxOfTourist;
+            }
+           
         }
 
         
 
         public override string ToString()
         {
-            return base.ToString() + String.Format("Discount: {0}\nMinimum passangers: {1}", discount, minOfTourist);
+            return base.ToString() + String.Format("Discount: {0}% if passanger count minimum {1}", discount, minOfTourist);
         }
     }
 }
