@@ -35,6 +35,8 @@ namespace TourAgency_HW
             tr1.PriceOfGroupp(30);
             tr1.MaximumTourist();
             Console.WriteLine(tr1.PriceAlone());
+            Console.WriteLine(trsp2.PriceSpecialTour(10));
+            
         }
     }
 }

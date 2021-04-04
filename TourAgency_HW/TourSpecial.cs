@@ -20,6 +20,19 @@ namespace TourAgency_HW
            
         }
 
+        public double PriceSpecialTour(int countPeople)
+        {
+            if(countPeople >= minOfTourist && countPeople <= maxOfTourist)
+            {
+                return ((countPeople * priceTour) - ((countPeople * priceTour) * discount / 100));
+            }
+            else
+            {
+
+                return -1;
+            }
+        }
+
         
 
         public override string ToString()
