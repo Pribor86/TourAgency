@@ -3,15 +3,10 @@ namespace TourAgency_HW
 {
     class Tour
     {
-        protected string nameTour;
-        protected int durationTour;
-        protected double priceTour;
-        protected int maxOfTourist;
-
-        public string NameTour { get => nameTour;  }
-        public int DurationTour { get => durationTour;  }
-        public double PriceTour { get => priceTour; }
-        public int MaxOfTourist { get => maxOfTourist;  }
+        public string nameTour { get; }
+        public int durationTour { get; }
+        public double priceTour { get; set; }
+        public int maxOfTourist { get; }
 
         public Tour(string nameTour, int durationTour, double priceTour, int maxOfTourist)
         {
@@ -21,61 +16,69 @@ namespace TourAgency_HW
             this.maxOfTourist = maxOfTourist;
         }
 
-        public string TourType()
-        {
-            return NameTour;
-        }
+        //public string TourType() //Запросы на данные, если не пойдут просто геттеры
+        //{
+        //    return nameTour;
+        //}
 
-        public int TourDuration()
-        {
-            return DurationTour;
-        }
+        //public int TourDuration()
+        //{
+        //    return durationTour;
+        //}
 
-        public double PriceForOne()
-        {
-            return priceTour;
-        }
+        //public double PriceForOne()
+        //{
+        //    return priceTour;
+        //}
 
-        public int MaximumTourist()
-        {
-            return MaxOfTourist;
-        }
+        //public int MaximumTourist()
+        //{
+        //    return maxOfTourist;
+        //}
 
         public double PriceAlone()
         {
-            return priceTour * maxOfTourist * 0.85;
+            return priceTour * maxOfTourist * 0.85; //Цены для одного человека, если он хочет поехать в тур один(со скидкой 15%)
         }
 
         public bool CheckTour(int countPeople)
         {
-            if (countPeople < maxOfTourist)
+            if (countPeople <= maxOfTourist && countPeople > 0)
             {
                 return true;
             }
             else
+            {
                 return false;
+            }
             
         }
 
-        public void PriceOfGroupp(int countPeople)
+        public virtual double PriceOfGroupp(int countPeople)
         {
-            if (countPeople < maxOfTourist)
+            if (countPeople <= maxOfTourist && countPeople > 0)
             {
 
-                Console.WriteLine(countPeople * priceTour);
+                return countPeople * priceTour;
             }
             else
             {
-                Console.WriteLine(CheckTour(countPeople));
+                CheckTour(countPeople);
+                return -1;
+                    
             }
         }
 
+        public double SetPriceTour(double price)
+        {
+            return priceTour = price;
+        }
 
 
 
         public override string ToString()
         {
-            if (durationTour > 24)
+            if (durationTour >= 24)
             {
                 int days;
                 int hours;

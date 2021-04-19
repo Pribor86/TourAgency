@@ -6,21 +6,29 @@ namespace TourAgency_HW
         static double discount = 10;
         int minOfTourist = 10;
 
-        public double Discount { get => discount;  }
+        public double Discount { get;  }
         public int MinOfTourist { get => minOfTourist; }
 
         public TourSpecial(string nameTour,
             int durationTour, double priceTour, int maxOfTourist)
             :base(nameTour, durationTour, priceTour, maxOfTourist)
         {
-            if (minOfTourist > maxOfTourist)
-            {
-                minOfTourist = maxOfTourist;
-            }
-           
+            DiscountCheck();
         }
 
-        public double PriceSpecialTour(int countPeople)
+        public int DiscountCheck()
+        {
+            if (minOfTourist > maxOfTourist)
+            {
+                return minOfTourist = maxOfTourist;
+            }
+            else
+            {
+                return minOfTourist;
+            }
+        }
+
+        public override double PriceOfGroupp(int countPeople)
         {
             if(countPeople >= minOfTourist && countPeople <= maxOfTourist)
             {
@@ -28,7 +36,7 @@ namespace TourAgency_HW
             }
             else
             {
-
+                DiscountCheck();
                 return -1;
             }
         }
