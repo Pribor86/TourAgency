@@ -11,9 +11,18 @@ namespace TourAgency_HW
             list = new List<Tour>();
         }
 
-        public void AddTour(Tour tour)
+        public bool AddTour(Tour tour)
         {
+            foreach (Tour tr in list)
+            {
+                if (tr.Equals(tour))
+                {
+                    return false;
+                }
+            }
             list.Add(tour);
+            return true;
+
         }
 
         public override string ToString()

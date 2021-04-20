@@ -94,5 +94,19 @@ namespace TourAgency_HW
                         , nameTour, durationTour, priceTour, maxOfTourist);
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Tour tour &&
+                   nameTour == tour.nameTour &&
+                   durationTour == tour.durationTour &&
+                   priceTour == tour.priceTour &&
+                   maxOfTourist == tour.maxOfTourist;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(nameTour, durationTour, priceTour, maxOfTourist);
+        }
     }
 }
