@@ -3,11 +3,10 @@ namespace TourAgency_HW
 {
     class TourSpecial: Tour
     {
-        static double discount = 10;
-        int minOfTourist = 10;
+        static double Discount { get; } = 10;
+        int MinOfTourist { get; set; } = 10;
 
-        public double Discount { get;  }
-        public int MinOfTourist { get => minOfTourist; }
+        
 
         public TourSpecial(string nameTour,
             int durationTour, double priceTour, int maxOfTourist)
@@ -18,21 +17,21 @@ namespace TourAgency_HW
 
         public int DiscountCheck()
         {
-            if (minOfTourist > maxOfTourist)
+            if (MinOfTourist > MaxOfTourist)
             {
-                return minOfTourist = maxOfTourist;
+                return MinOfTourist = MaxOfTourist;
             }
             else
             {
-                return minOfTourist;
+                return MinOfTourist;
             }
         }
 
         public override double PriceOfGroupp(int countPeople)
         {
-            if(countPeople >= minOfTourist && countPeople <= maxOfTourist)
+            if(countPeople >= MinOfTourist && countPeople <= MaxOfTourist)
             {
-                return ((countPeople * priceTour) - ((countPeople * priceTour) * discount / 100));
+                return ((countPeople * PriceTour) - ((countPeople * PriceTour) * Discount / 100));
             }
             else
             {
@@ -45,7 +44,7 @@ namespace TourAgency_HW
 
         public override string ToString()
         {
-            return base.ToString() + String.Format("Discount: {0}% if passanger count minimum {1}", discount, minOfTourist);
+            return base.ToString() + String.Format("Discount: {0}% if passanger count minimum {1}", Discount, MinOfTourist);
         }
     }
 }

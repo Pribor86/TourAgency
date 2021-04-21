@@ -7,15 +7,15 @@ namespace TourAgency_HW
         static void Main(string[] args)
         {
             TourList tourList = new TourList();
-            Tour tr1 = new("Saaremaa", 25, 150, 40);
-            Tour tr2 = new("Hiiumaa", 10, 10, 50);
-            Tour tr3 = new("Viljandi", 10, 150, 20);
-            Tour tr4 = new("Muhu", 10, 150, 30);
-            Tour tr5 = new("Parnu", 10, 150, 35);
-            Tour tr6 = new("SPB", 10, 150, 40);
-            Tour tr7 = new("Saaremaa", 25, 150, 40);//tr7 == tr1
-            TourSpecial trsp1 = new("Paide", 15, 100, 5);
-            TourSpecial trsp2 = new("Loitsu", 40, 200, 15);
+            Tour tr1 = new Tour("Saaremaa", 25, 150, 40);
+            Tour tr2 = new Tour("Hiiumaa", 10, 10, 50);
+            Tour tr3 = new Tour("Viljandi", 10, 150, 20);
+            Tour tr4 = new Tour("Muhu", 10, 150, 30);
+            Tour tr5 = new Tour("Parnu", 10, 150, 35);
+            Tour tr6 = new Tour("SPB", 10, 150, 40);
+            Tour tr7 = new Tour("Saaremaa", 25, 150, 40);//tr7 == tr1
+            TourSpecial trsp1 = new TourSpecial("Paide", 15, 100, 5);// минимальное число для скидки стало 5
+            TourSpecial trsp2 = new TourSpecial("Loitsu", 40, 200, 15);
             tourList.AddTour(trsp1);
             tourList.AddTour(trsp2);
             tourList.AddTour(tr1);
@@ -35,12 +35,12 @@ namespace TourAgency_HW
             Console.WriteLine(tr1.PriceOfGroupp(15));
             Console.WriteLine(tr1.SetPriceTour(10));
             Console.WriteLine(trsp1.PriceOfGroupp(100));//-> return -1
-            Console.WriteLine(tr1.nameTour);
-            Console.WriteLine(tr2.maxOfTourist);
-            Console.WriteLine(tr3.durationTour);
-            Console.WriteLine(tr4.priceTour);
-            Console.WriteLine(trsp1.maxOfTourist);
-            Console.WriteLine(tr1.priceTour);
+            Console.WriteLine(tr1.NameTour);
+            Console.WriteLine(tr2.MaxOfTourist);
+            Console.WriteLine(tr3.DurationTour);
+            Console.WriteLine(tr4.PriceTour);
+            Console.WriteLine(trsp1.MaxOfTourist);
+            Console.WriteLine(tr1.PriceTour);
             tr1.PriceOfGroupp(30);
             Console.WriteLine(tr1.PriceAlone());
             Console.WriteLine(trsp2.PriceOfGroupp(16));// -> return -1
