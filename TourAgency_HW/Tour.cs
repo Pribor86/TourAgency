@@ -1,7 +1,8 @@
 ﻿using System;
 namespace TourAgency_HW
 {
-    class Tour
+    class Tour : IComparable
+
     {
         public string NameTour { get; }
         public int DurationTour { get; }
@@ -14,6 +15,10 @@ namespace TourAgency_HW
             this.DurationTour = durationTour;
             this.PriceTour = priceTour;
             this.MaxOfTourist = maxOfTourist;
+        }
+
+        public Tour()
+        {
         }
 
         //public string TourType() //Запросы на данные, если не пойдут просто геттеры
@@ -56,17 +61,23 @@ namespace TourAgency_HW
 
         public virtual double PriceOfGroupp(int countPeople)
         {
-            if (countPeople <= MaxOfTourist && countPeople > 0)
-            {
+            //if (countPeople <= MaxOfTourist && countPeople > 0)
+            //{
 
+            //    return countPeople * PriceTour;
+            //}
+            //else
+            //{
+            //    CheckTour(countPeople);
+            //    return -1;
+
+            //}
+            if (CheckTour(countPeople))
                 return countPeople * PriceTour;
-            }
-            else
-            {
-                CheckTour(countPeople);
-                return -1;
-                    
-            }
+
+            return -1;
+
+
         }
 
         public double SetPriceTour(double price)
@@ -74,7 +85,7 @@ namespace TourAgency_HW
             return PriceTour = price;
         }
 
-
+        
 
         public override string ToString()
         {
@@ -107,6 +118,12 @@ namespace TourAgency_HW
         public override int GetHashCode()
         {
             return HashCode.Combine(NameTour, DurationTour, PriceTour, MaxOfTourist);
+        }
+
+        public int CompareTo(object obj)
+        {
+            Tour temp = (Tour)obj;
+            return NameTour.CompareTo(temp.NameTour);
         }
     }
 }

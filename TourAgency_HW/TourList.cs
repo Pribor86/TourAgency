@@ -25,6 +25,34 @@ namespace TourAgency_HW
 
         }
 
+        public string FindByName(string name)
+        {
+            string result = "";
+            foreach (Tour tr in list)
+            {
+                if (tr.NameTour == name)
+                {
+                    result += tr.ToString() + "\n";
+                }
+            }
+            return result;
+        }
+        public void SortList()
+        {
+            list.Sort();
+        }
+
+        public double AveragePrice()
+        {
+            double summ = 0;
+            foreach (Tour tr in list)
+            {
+                summ += tr.PriceTour;
+            }
+            double averg = summ / list.Count;
+            return averg;
+        }
+
         public override string ToString()
         {
             string tempString = "";
